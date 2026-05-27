@@ -1,0 +1,99 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.educandoweb</groupId>
+  <artifactId>aula_jpa_maven</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>Archetype - aula_jpa_maven</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <kotlin.version>2.3.10</kotlin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.hibernate.orm</groupId>
+      <artifactId>hibernate-core</artifactId>
+      <version>6.4.4.Final</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.mysql</groupId>
+      <artifactId>mysql-connector-j</artifactId>
+      <version>8.3.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-stdlib-jdk8</artifactId>
+      <version>${kotlin.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-test</artifactId>
+      <version>${kotlin.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+<build>
+  <plugins>
+    <plugin>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-maven-plugin</artifactId>
+      <version>${kotlin.version}</version>
+      <extensions>true</extensions>
+      <executions>
+        <execution>
+          <id>compile</id>
+          <phase>compile</phase>
+          <goals>
+            <goal>compile</goal>
+          </goals>
+          <configuration/>
+        </execution>
+        <execution>
+          <id>test-compile</id>
+          <phase>test-compile</phase>
+          <goals>
+            <goal>test-compile</goal>
+          </goals>
+        </execution>
+      </executions>
+      <dependencies>
+        <dependency>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-maven-noarg</artifactId>
+          <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.jetbrains.kotlin</groupId>
+          <artifactId>kotlin-maven-allopen</artifactId>
+          <version>${kotlin.version}</version>
+        </dependency>
+      </dependencies>
+      <configuration>
+        <jvmTarget>${maven.compiler.target}</jvmTarget>
+        <compilerPlugins>
+          <plugin>jpa</plugin>
+          <plugin>all-open</plugin>
+        </compilerPlugins>
+        <pluginOptions>
+          <option>all-open:annotation=javax.persistence.Entity</option>
+          <option>all-open:annotation=javax.persistence.Embeddable</option>
+          <option>all-open:annotation=javax.persistence.MappedSuperclass</option>
+          <option>all-open:annotation=jakarta.persistence.Entity</option>
+          <option>all-open:annotation=jakarta.persistence.Embeddable</option>
+          <option>all-open:annotation=jakarta.persistence.MappedSuperclass</option>
+        </pluginOptions>
+      </configuration>
+    </plugin>
+  </plugins>
+</build>
+
+</project>

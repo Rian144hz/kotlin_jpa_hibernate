@@ -1,0 +1,9 @@
+<archetype>
+  <id>aula_jpa_maven</id>
+  <sources>
+    <source>src/application.main/java/App.java</source>
+  </sources>
+  <testSources>
+    <source>src/test/java/AppTest.java</source>
+  </testSources>
+</archetype>
